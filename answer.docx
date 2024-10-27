@@ -1,0 +1,89 @@
+{1}:VIT{
+все слова из текста, в которых используется хаотичное использование заглавных букв в середине слов:
+1.	uS
+2.	fi rst
+3.	Our
+4.	Signifi cant
+5.	BOth
+6.	First
+7.	Attacking
+8.	foR
+9.	looK
+10.	wEb
+11.	stEal
+12.	Perform
+13.	This
+14.	suffi cient
+15.	backgRound
+16.	You
+17.	Include
+18.	additioN
+19.	describinG
+ Все заглавные буквы из этих слов, записанные в одну строку:
+"USOBOAFRAKWEBSTEPTBYING"
+Все заглавные буквы:
+"WNGSSSSOBWGWWCLOAOTOAEGJKWDABASBODMLMFAMRITBWIKBEEPTTTARYTWISJINGI"}
+
+{2}:VIT{
+Для начала я изменила формат файла на архив, после чего открыла архив с этим файлом и увидела в примечании(окошко справа в winrar), где и находился данный код. Также в этом архиве находился файл flag.txt.
+aHR0cHM6Ly9naXRodWIuY29tLzRpcG9rL3ZvbGdhX2l0XzIwMjQtaWItLmdpdA==}
+
+{3}:VIT{
+будем использовать первые буквы каждой группы символов, чтобы найти соответствующие химические элементы и их атомные номера. Затем мы преобразуем атомные номера в буквы алфавита.
+Разделим строку на группы: "Bk", "Fl", "Sb", "Am", "U", "bu", "Cd", "Ts", "Am", "Mc", "Md", "Md", "Am", "Mt", "Md", "Eu".
+Используя правило, что 1 = A, 2 = B, ..., 26 = Z (для атомных номеров больше 26 будем использовать модуль 26).
+•  Bk — Берклий (97)
+•  Fl — Флеровий (114)
+•  Sb — Антимон (51)
+•  Am — Америций (95)
+•  Ubu — Унундектий (121)
+•  Cd — Кадмий (48)
+•  Ts — Теннессин (117)
+•  Mc — Московий (115)
+•  Md — Менделевий (101)
+•  Mt — Мейтнерий (109)
+•  Eu — Евпторий (63)
+•  97 -> 97 % 26 = 19 -> S
+•  114 -> 114 % 26 = 10 -> J
+•  51 -> 51 % 26 = 25 -> Y
+•  95 -> 95 % 26 = 17 -> Q
+•  121 -> 121 % 26 = 17 ->  Q
+•  48 -> 48 % 26 = 22 -> V
+•  117 -> 117 % 26 = 13 -> M
+•  115 -> 115 % 26 = 11 -> K
+•  101 -> 101 % 26 = 23 -> W
+•  109 -> 109 % 26 = 5 -> E
+•  63 -> 63 % 26 = 11 -> K
+Результаты сопоставления:
+•	Bk → S
+•	Fl → J
+•	Sb → Y
+•	Am → Q
+•	Ubu → U
+•	Cd → V
+•	Ts → M
+•	Am → Q
+•	Mc → K
+•	Md → W
+•	Md → W
+•	Am → Q
+•	Mt → E
+•	Md → W
+•	Eu → K
+Сбор букв:
+Теперь соберем все буквы из соответствий, чтобы получить итоговое сообщение.
+•	S J Y Q U V M Q K W W Q E W K
+Полученная строка будет: "SJYQUVMQKWWQEWK".}
+
+{4}:VIT{ 
+На фотографии изображен Ниагарский водопад}
+
+{5}:VIT{
+Я предположила, что  в заданном файле был предоставлен шифр, который нужно было декодировать. Я написала код в питоне, который позволяет декодировать файлы в разных кодировках. В данном файле я попыталась расшифровать следующие кодировки: 'utf-16', 'utf-8', 'latin1'. И вот что из этого вышло:
+ /          !   "    & ÿ	           H   %               ÷   V   N   	r      	       à           ^   d 
+ z 	  . è    N  N  7]»/ÜN  N  N      H A K t r a n s a c t i o n ã¥¦¥ó¥¥P¥³¥C¥2¥¦¥C¥ó¥P¥¥ó¥ó¥P¥s¥ó¥V¥M i c s o f t   S Q L   S e r v e r   M a n a g e m e n t   S t u d i o   E x p r e s s b a n k s o f t . n o t r l y . h u , 6 0 0 2 . N e t   S q l C l i e n t   D a t a   P r o v i d e r  } 6 ã t e m p d b m a s t e r «h E   % C h a n g e d   d a t a b a s e   c o n t e x t   t o   ' t e m p d b ' . 	S Z V M S Z K 0 1      Ð   ã 
+u s _ e n g l i s h  «l G   ' C h a n g e d   l a n g u a g e   s e t t i n g   t o   u s _ e n g l i s h . 	S Z V M S Z K 0 1    ­6 q  M i c r o s o f t   S Q L   S e r v e r     ÷ã   4 0 9 6  4 0 9 6 ý    
+Предполагаю, что здесь написано    haktransaction, Microsoft SQL Server Management Studio, Expressbanksoft.notrly.hu.6002.net SQLclient Data Provider tempdb master changed database context to ‘tempdb’ SZVMSZK01 
+Us_english I changed language setting to us_english. SZVMSZK01 Microsoft SQL Server 4096
+Попробую прочитать данное послание: хакерская транзакция в Microsoft SQL Server Management Studio по адресу Expressbanksoft.notrly.hu:6002. net SQLclient Data Provider(вероятно это сеть), tempdb master(вероятно tempdb – это временная база данных, или временные файлы базы данных ветки мастер), далее здесь написано изменение базы данных tempdb и некоторый код SZVMSZK01. Далее мы можем увидеть, что язык был изменен в настройках на us_english, 4096 – вероятнее всего либо порт, либо объем данных.
+}
